@@ -1,25 +1,30 @@
 module.exports = (sequelize, Sequelize) => {
-    const User = sequelize.define("user", {
-        name: {
-            type: Sequelize.STRING,
-        },
-        email: {
-            type: Sequelize.STRING,
-        },
-        password: {
-            type: Sequelize.STRING,
-        },
-        team: {
-            type: Sequelize.STRING,
-        }
+  const User = sequelize.define("user", {
+    name: {
+      type: Sequelize.STRING,
+    },
+    username: {
+      type: Sequelize.STRING,
+      unique: true,
+    },
+    email: {
+      type: Sequelize.STRING,
+      unique: true,
+    },
+    password: {
+      type: Sequelize.STRING,
+    },
+    team: {
+      type: Sequelize.STRING,
+    },
+  });
+
+  User.associate = (models) => {
+    User.hasMany(models.brusKjøp, {
+      foreignKey: "userId",
+      as: "brusKjøp",
     });
+  };
 
-    User.associate = (models) => {  
-        User.hasMany(models.brus, {
-            foreignKey: "userId",
-            as: "brus",
-        });
-    };
-
-    return User;
+  return User;
 };

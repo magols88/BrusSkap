@@ -6,16 +6,14 @@ module.exports = (sequelize, Sequelize) => {
     price: {
       type: Sequelize.INTEGER,
     },
-    description: {
-      type: Sequelize.STRING,
-    },
   });
 
   Brus.associate = (models) => {
-    Brus.belongsTo(models.user, {
-      foreignKey: "userId",
-      as: "user",
+    Brus.hasMany(models.brusKjøp, {
+      foreignKey: "brusId",
+      as: "brusKjøp",
     });
   };
+
   return Brus;
 };
