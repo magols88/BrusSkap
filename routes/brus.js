@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const db = require("../models");
-const BrusService = require("../services/BrusService");
+const BrusService = require("../Services/BrusService");
 const brusService = new BrusService(db);
 const { decodeJWT } = require("../middleware/decodeToken");
 

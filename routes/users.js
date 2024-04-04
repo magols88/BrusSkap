@@ -3,7 +3,8 @@ var router = express.Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const db = require("../models");
-
+const UserService = require("../Services/UserService.js");
+const userservice = new UserService(db);
 const { checkUser } = require("../middleware/checkUser");
 
 /* GET users listing. */
