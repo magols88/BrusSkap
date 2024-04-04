@@ -4,5 +4,10 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+}
+
+h3 {
+  padding-top: 20px;
+  text-align: center;
 }

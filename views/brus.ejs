@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Brus Shop</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body class="container py-5">
+    <h1 class="text-center mb-4">Velkommen til Frodes Bruskasse!</h1>
+
+    <form
+      id="orderForm"
+      action="/brus/order"
+      method="POST"
+      class="mx-auto"
+      style="max-width: 300px"
+    >
+      <div class="form-group">
+        <label for="quantity">Antall Brus:</label>
+        <select id="quantity" name="quantity" class="form-control">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
+      <input
+        type="submit"
+        value="Kjøp Brus"
+        class="btn btn-primary btn-block"
+      />
+    </form>
+    <h3>Du har drukket <%=orders%> brus til nå.</h3>
+    <script src="brus.js"></script>
+  </body>
+</html>

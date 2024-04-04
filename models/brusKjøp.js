@@ -6,6 +6,9 @@ module.exports = (sequelize, Sequelize) => {
     brusId: {
       type: Sequelize.INTEGER,
     },
+    quantity: {
+      type: Sequelize.INTEGER,
+    },
   });
 
   BrusKjøp.associate = (models) => {

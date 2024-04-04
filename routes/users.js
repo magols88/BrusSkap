@@ -59,7 +59,7 @@ router.post("/login", async function (req, res, next) {
         }
       );
       res.cookie("jwt", token, { httpOnly: true });
-      res.json({ message: "User logged in", token: token });
+      res.redirect("/brus");
     } else {
       res.status(400).json({ message: "Wrong password" });
     }
@@ -71,7 +71,7 @@ router.post("/login", async function (req, res, next) {
 
 router.get("/logout", function (req, res, next) {
   res.clearCookie("jwt");
-  res.redirect("/login");
+  res.redirect("/");
 });
 
 module.exports = router;
