@@ -12,6 +12,10 @@ router.get("/login", checkUser, function (req, res, next) {
   res.render("login", { users: req.user, title: "Login" });
 });
 
+router.get("/signup", checkUser, function (req, res, next) {
+  res.render("signup", { users: req.user, title: "Signup" });
+});
+
 router.post("/signup", async function (req, res, next) {
   try {
     const { name, username, email, password, team } = req.body;
@@ -32,7 +36,7 @@ router.post("/signup", async function (req, res, next) {
         expiresIn: "24h",
       }
     );
-    res.json({ message: "User signed up", token: token });
+    res.redirect("/login");
   } catch (error) {
     console.error(error);
     res
