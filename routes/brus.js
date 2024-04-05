@@ -5,11 +5,17 @@ const db = require("../models");
 const BrusService = require("../Services/BrusService");
 const brusService = new BrusService(db);
 const { decodeJWT } = require("../middleware/decodeToken");
+const { checkUser } = require("../middleware/checkUser");
 
-router.get("/", decodeJWT, async function (req, res, next) {
+router.get("/", decodeJWT, checkUser, async function (req, res, next) {
   const brus = await brusService.getAllBrus();
   const orders = await brusService.calculateTotalBrus(req.userId);
-  res.render("brus", { userId: req.userId, brus: brus, orders: orders });
+  res.render("brus", {
+    users: req.user,
+    userId: req.userId,
+    brus: brus,
+    orders: orders,
+  });
 });
 
 router.get("/total", decodeJWT, async function (req, res, next) {

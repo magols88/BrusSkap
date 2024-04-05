@@ -7,7 +7,6 @@ var bodyParser = require("body-parser");
 require("dotenv").config();
 const db = require("./models");
 
-var index = require("./routes/index");
 var users = require("./routes/users");
 var brus = require("./routes/brus");
 
@@ -30,7 +29,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", index);
 app.use("/", users);
 app.use("/brus", brus);
 

@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body class="container py-5">
+    <%- include('./partials/navbar.ejs', {users: users}) %>
+
     <h1 class="text-center mb-4">Velkommen til Frodes Bruskasse!</h1>
 
     <form
@@ -40,6 +42,6 @@
       />
     </form>
     <h3>Du har drukket <%=orders%> brus til nå.</h3>
-    <script src="brus.js"></script>
+    <script src="/javascripts/brus.js"></script>
   </body>
 </html>
