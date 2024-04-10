@@ -9,7 +9,13 @@ const { checkUser } = require("../middleware/checkUser");
 
 /* GET users listing. */
 router.get("/login", checkUser, function (req, res, next) {
-  res.render("login", { users: req.user, title: "Login" });
+  if (req.user) {
+    // If user is logged in, redirect to /brus
+    res.redirect("/brus");
+  } else {
+    // If user is not logged in, render the login page
+    res.render("login", { users: req.user, title: "Login" });
+  }
 });
 
 router.get("/signup", checkUser, function (req, res, next) {
@@ -59,7 +65,7 @@ router.post("/login", async function (req, res, next) {
         { id: user.id, username: user.username },
         process.env.TOKEN_SECRET,
         {
-          expiresIn: "24h",
+          expiresIn: "30d",
         }
       );
       res.cookie("jwt", token, { httpOnly: true });
