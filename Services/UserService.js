@@ -2,6 +2,7 @@ class UserService {
   constructor(db) {
     this.client = db.client;
     this.user = db.user;
+    this.brusKjøp = db.brusKjøp;
   }
 
   async getAllUsers() {
@@ -24,6 +25,22 @@ class UserService {
       password: hashedPassword,
       team: team,
     });
+  }
+
+  async betaltBrus(userId) {
+    const deletedOrders = await this.brusKjøp.destroy({
+      where: { userId: userId, brusId: 1 },
+    });
+
+    return deletedOrders;
+  }
+
+  async deleteUser(userId) {
+    const deletedUser = await this.user.destroy({
+      where: { id: userId },
+    });
+
+    return deletedUser;
   }
 }
 

@@ -9,6 +9,7 @@ const db = require("./models");
 
 var users = require("./routes/users");
 var brus = require("./routes/brus");
+var admin = require("./routes/admin");
 
 db.sequelize
   .sync({ force: false })
@@ -31,6 +32,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", users);
 app.use("/brus", brus);
+app.use("/admin", admin);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
