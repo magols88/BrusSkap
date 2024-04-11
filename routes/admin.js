@@ -17,6 +17,13 @@ router.get("/", async function (req, res, next) {
   res.render("admin", { title: "Admin", users: users });
 });
 
+router.put("/update/:userId", async function (req, res, next) {
+  const userId = req.params.userId;
+  const { name, username, email, totalBrus, team } = req.body;
+  await userServices.updateUser(userId, name, username, email, totalBrus, team);
+  res.json({ success: true });
+});
+
 router.delete("/betalt/:userId", async function (req, res, next) {
   const userId = req.params.userId;
   await userServices.betaltBrus(userId);

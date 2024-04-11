@@ -17,6 +17,7 @@
           <tr>
             <th>Navn</th>
             <th>Brukernavn</th>
+            <th>Epost</th>
             <th>Antall Brus</th>
             <th>Lag</th>
             <th>Rediger</th>
@@ -27,12 +28,24 @@
           <tr>
             <td><%= user.name %></td>
             <td><%= user.username %></td>
+            <td><%= user.email %></td>
             <td><%= user.totalBrus %></td>
             <td><%= user.team %></td>
             <td>
-              <a href="/admin//<%= user.id %>" class="btn btn-primary"
-                >Rediger</a
+              <button
+                type="button"
+                class="btn btn-primary edit-button"
+                data-toggle="modal"
+                data-target="#editUserModal"
+                data-user-id="<%= user.id %>"
+                data-user-name="<%= user.name %>"
+                data-user-username="<%= user.username %>"
+                data-user-email="<%= user.email %>"
+                data-user-totalBrus="<%= user.totalBrus %>"
+                data-user-team="<%= user.team %>"
               >
+                Rediger
+              </button>
               <button
                 data-user-id="<%= user.id %>"
                 class="btn btn-danger betalt-button"
@@ -45,9 +58,91 @@
         </tbody>
       </table>
     </div>
-    <!-- Add Bootstrap JS and its dependencies -->
+    <!-- modal -->
+    <div
+      class="modal fade"
+      id="editUserModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="editUserModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editUserModalLabel">Rediger</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="editUserForm">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" />
+              </div>
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  name="username"
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" />
+              </div>
+
+              <div class="form-group">
+                <label for="totalBrus">Total Brus</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="totalBrus"
+                  name="totalBrus"
+                  readonly
+                />
+              </div>
+              <div class="form-group">
+                <label for="team">Lag</label>
+                <input type="text" class="form-control" id="team" name="team" />
+              </div>
+<button type="button" class="btn btn-danger" id="deleteUserButton">Slett Bruker</button>
+             
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              id="saveChangesButton"
+            >
+              Save changes
+            </button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/javascripts/betalt.js"></script>
+    <script src="/javascripts/adminRediger.js"></script>
+        <script src="/javascripts/adminSlett.js"></script>
+
   </body>
 </html>
