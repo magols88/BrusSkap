@@ -12,7 +12,11 @@
     <%- include('./partials/navbar.ejs', {users: users}) %>
 
     <div class="image-form-container">
-      <img src="/images/frode.jpg" alt="frode" class="background-image" />
+      <img
+        src="https://www.shutterstock.com/shutterstock/photos/1415545238/display_1500/stock-vector-flat-icon-of-cyclic-rotation-recycling-recurrence-renewal-1415545238.jpg"
+        alt="frode"
+        class="background-image"
+      />
       <form id="orderForm" action="/brus/order" method="POST" class="mx-auto">
         <div class="form-group">
           <input type="hidden" id="quantity" name="quantity" value="1" />
