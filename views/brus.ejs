@@ -9,6 +9,10 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="container py-5">
     <%- include('./partials/navbar.ejs', {users: users}) %>
@@ -24,17 +28,13 @@
           <input type="hidden" id="quantity" name="quantity" value="1" />
         </div>
         <h3 class="orders">
-          Du har drukket <br />
+          Du skylder<br />
           <%=orders%>
           <br />
-          Brus
+          Brus!
         </h3>
 
-        <input
-          type="submit"
-          value="Kjøp Brus"
-          class="btn btn-primary submit-button"
-        />
+        <input type="submit" value="Kjøp Brus" class="btn submit-button" />
       </form>
     </div>
 
