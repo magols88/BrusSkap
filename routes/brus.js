@@ -30,7 +30,8 @@ router.post("/", async function (req, res, next) {
 
 router.post("/order", decodeJWT, async function (req, res, next) {
   const quantity = req.body.quantity;
-  const brus = await brusService.orderBrus(req.userId, quantity);
+  const totalBrus = req.body.totalBrus;
+  const brus = await brusService.orderBrus(req.userId, quantity, totalBrus);
   res.json({ brus: brus });
 });
 

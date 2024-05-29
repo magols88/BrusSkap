@@ -3,7 +3,10 @@
   <head>
     <title>Brus Shop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@1,700&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -18,22 +21,14 @@
     <%- include('./partials/navbar.ejs', {users: users}) %>
 
     <div class="image-form-container">
-      <img
-        src="https://i.postimg.cc/W4c4NhqB/Frode.jpg"
-        alt="frode"
-        class="background-image"
-      />
+      <img src="/images/Frode.jpg" alt="frode" class="background-image" />
       <form id="orderForm" action="/brus/order" method="POST" class="mx-auto">
         <div class="form-group">
           <input type="hidden" id="quantity" name="quantity" value="1" />
         </div>
-        <h3 class="orders">
-          Du skylder<br />
-          <%=orders%>
-          <br />
-          Brus!
-        </h3>
-
+        <div class="bubble b r hb">
+          Du skylder meg <strong><%= orders %></strong> brus
+        </div>
         <input type="submit" value="Kjøp Brus" class="btn submit-button" />
       </form>
     </div>

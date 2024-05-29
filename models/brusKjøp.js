@@ -8,6 +8,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     quantity: {
       type: Sequelize.INTEGER,
+      defaultValue: 1,
     },
   });
 

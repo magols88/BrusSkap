@@ -17,6 +17,10 @@ module.exports = (sequelize, Sequelize) => {
     team: {
       type: Sequelize.STRING,
     },
+    totalBrus: {
+      type: Sequelize.INTEGER,
+      defaultValue: 0,
+    },
   });
 
   User.associate = (models) => {
